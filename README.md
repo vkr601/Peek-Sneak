@@ -1,29 +1,14 @@
 # Lot Drawer
 
-Static web app for the Sneak Peek event.
+Google Sheets is the only data source.
 
-## Deploy to GitHub Pages
+Spreadsheet ID: `1LtBZ-hZaZurSwKl-E44WWt8IUxRPT2wnZvcru6ALlo0`
 
-1. Create a GitHub repository.
-2. Upload `index.html` and the `assets` folder to the repository root.
-3. Go to **Settings → Pages**.
-4. Choose **Deploy from a branch → main → /(root)**.
-5. Save and open the generated GitHub Pages URL.
+Mapping:
+- B1 = Subject tab title; B2:B21 = Subject items
+- C1 = Plot tab title; C2:C21 = Plot items
+- D1 = Twist tab title; D2:D21 = Twist items
 
-## Deploy to Vercel
+Blank cells from rows 2–21 are ignored. No localStorage, add, edit, or delete controls are used.
 
-1. Import this repository into Vercel, or drag this folder into Vercel.
-2. Framework preset: **Other** / no framework.
-3. Build command: leave empty.
-4. Output directory: `.`
-5. Deploy.
-
-## Google Sheets
-
-The app reads `B2:D21` from the configured Google Sheet and maps the columns to:
-
-- Column B → Subject
-- Column C → Plot
-- Column D → Twist
-
-The spreadsheet must be accessible to the web. Changes are picked up when the app loads again.
+The page fetches B1:B21, C1:C21, and D1:D21 independently using Google Visualization JSON with `headers=0`, so row 1 is treated as data rather than a response header.
